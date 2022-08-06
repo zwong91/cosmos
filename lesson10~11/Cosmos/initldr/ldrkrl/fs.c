@@ -1,3 +1,4 @@
+/*实现解析映像文件功能*/
 #include "cmctl.h"
 
 void fs_entry()

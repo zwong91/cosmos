@@ -1,3 +1,4 @@
+/*实现切换显卡图形功能*/
 #include "cmctl.h"
 
 void write_pixcolor(machbstart_t *mbsp, u32_t x, u32_t y, pixl_t pix)

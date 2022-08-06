@@ -1,3 +1,4 @@
+;二级引导器核心入口汇编部分
 %include "ldrasm.inc"
 global _start
 global realadr_call_entry

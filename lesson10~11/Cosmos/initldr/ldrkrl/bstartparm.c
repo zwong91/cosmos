@@ -1,3 +1,4 @@
+/*实现收集机器信息建立页面数据*/
 #include "cmctl.h"
 void testm2m()
 {

@@ -59,7 +59,12 @@ VBoxManage storagectl HelloOS --name "SATA" --add sata --controller IntelAhci
 #第二步
 VBoxManage closemedium disk ./hd.vdi #删除虚拟硬盘UUID并重新分配
 #将虚拟硬盘挂到虚拟机的硬盘控制器
-VBoxManage storageattach HelloOS --storagectl "SATA" --port 1 --device 0 --type ...
-
-# 参考教程
+VBoxManage storageattach HelloOS --storagectl "SATA" --port 1 --device 0 --type
 https://blog.csdn.net/ll15982534415/article/details/118771286
+
+
+
+# grub -> 二级引导器
+二级引导器作为操作系统的先驱, 解析内核映像文件， 收集机器环境信息， 对CPU 内存， 显卡初步设置
+
+

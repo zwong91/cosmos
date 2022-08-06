@@ -1,3 +1,4 @@
+/*二级引导器核心入口*/
 #include "cmctl.h"
 
 extern idtr_t IDT_PTR;

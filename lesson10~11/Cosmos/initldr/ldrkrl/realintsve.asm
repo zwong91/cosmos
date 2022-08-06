@@ -1,3 +1,4 @@
+;实现调用BIOS中断的功能
 %include "ldrasm.inc"
 global _start
 [section .text]
