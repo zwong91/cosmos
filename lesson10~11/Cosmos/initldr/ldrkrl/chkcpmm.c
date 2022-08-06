@@ -1,4 +1,4 @@
-
+/*实现检查CPU工作模式和内存视图*/
 #include "cmctl.h"
 
 unsigned int acpi_get_bios_ebda()

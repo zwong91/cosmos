@@ -1,3 +1,4 @@
+/*GRUB头C部分， 放置二级引导器到指定内存*/
 #include "cmctl.h"
 
 void inithead_entry()
