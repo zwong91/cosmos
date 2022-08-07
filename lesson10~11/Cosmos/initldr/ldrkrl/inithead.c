@@ -1,6 +1,7 @@
-/*GRUB头C部分， 放置二级引导器到指定内存*/
+/*GRUB头C部分， 放置二级引导器initldrkrl.bin到指定内存地址*/
 #include "cmctl.h"
 
+// 映像文件中的 initldrsve.bin 文件和initldrkrl.bin 文件写入到特定的内存地址空间中
 void inithead_entry()
 {
     init_curs();
@@ -13,6 +14,7 @@ void inithead_entry()
     return;
 }
 
+//写initldrsve.bin文件到特定的内存中
 void write_realintsvefile()
 {
 
@@ -26,6 +28,7 @@ void write_realintsvefile()
     return;
 }
 
+//在映像文件中查找对应的文件
 fhdsc_t *find_file(char_t *fname)
 {
     mlosrddsc_t *mrddadrs = MRDDSC_ADR;
@@ -57,6 +60,7 @@ ok_l:
     return &fhdscstart[rethn];
 }
 
+//写initldrkrl.bin文件到特定的内存中
 void write_ldrkrlfile()
 {
     fhdsc_t *fhdscstart = find_file("initldrkrl.bin");

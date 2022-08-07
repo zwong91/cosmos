@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.excalidraw": "json",
+        "*.excalidrawlib": "json",
+        "cmctl.h": "c",
+        "chkcpmm_t.h": "c"
+    }
+}

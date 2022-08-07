@@ -114,6 +114,7 @@ void init_mem(machbstart_t *mbsp)
     init_acpi(mbsp);
     return;
 }
+
 void init_chkcpu(machbstart_t *mbsp)
 {
     if (!chk_cpuid())
@@ -127,6 +128,7 @@ void init_chkcpu(machbstart_t *mbsp)
         kerror("Your CPU is not support 64bits mode sys is die!");
         CLI_HALT();
     }
+    //如果成功则设置机器信息结构的cpu模式为64位
     mbsp->mb_cpumode = 0x40;
     return;
 }
@@ -239,6 +241,7 @@ u64_t get_memsize(e820map_t *e8p, u32_t enr)
     return len;
 }
 
+//通过改写Eflags寄存器的第21位，观察其位的变化判断是否支持CPUID
 int chk_cpuid()
 {
     int rets = 0;
@@ -262,7 +265,7 @@ int chk_cpuid()
         :);
     return rets;
 }
-
+//检查CPU是否支持长模式
 int chk_cpu_longmode()
 {
     int rets = 0;

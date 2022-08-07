@@ -45,10 +45,13 @@ void disp_mbsp(machbstart_t *mbsp)
     return;
 }
 
+// 负责管理检查CPU 模式、收集内存信息，设置内核栈，设置内核字体、建立内核 MMU 页表数据
 void init_bstartparm()
 {
+    //1MB的内存地址处
     machbstart_t *mbsp = MBSPADR;
     machbstart_t_init(mbsp);
+    
     init_chkcpu(mbsp);
     init_mem(mbsp);
     if (0 == get_wt_imgfilesz(mbsp))
@@ -63,6 +66,7 @@ void init_bstartparm()
     init_graph(mbsp);
     return;
 }
+//初始化machbstart_t结构体，清0,并设置一个标志
 void machbstart_t_init(machbstart_t *initp)
 {
     memset(initp, 0, sizeof(machbstart_t));
