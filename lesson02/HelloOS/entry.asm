@@ -4,7 +4,7 @@ MBT_HDR_FLAGS	EQU 0x00010003
 MBT_HDR_MAGIC	EQU 0x1BADB002 ;多引导协议头魔数
 MBT_HDR2_MAGIC	EQU 0xe85250d6 ;第二版多引导协议头魔数
 global _start ;导出_start符号
-extern main ;导入外部的main函数符号
+extern main ;导入外部的main函数符号, nasm 和 gcc 编译 -o可链接模块，通过ld链接可执行文件
 
 [section .start.text] ;定义.start.text代码节
 [bits 32] ;汇编成32位代码
@@ -42,10 +42,11 @@ mbt2_hdr:
 	DD	8
 mbt2_hdr_end:
 ;以上是GRUB2所需要的头
-;包含两个头是为了同时兼容GRUB、GRUB2
+;GRUB多引导协议标准识别Hello OS, 包含两个头是为了同时兼容GRUB、GRUB2
 
 ALIGN 8
 
+;关中断, 设置cpu工作模式
 _entry:
 	;关中断
 	cli
@@ -57,6 +58,7 @@ _entry:
 	lgdt [GDT_PTR]
 	jmp dword 0x8 :_32bits_mode
 
+; 初始化CPU寄存器和C语言工作环境(栈)
 _32bits_mode:
 	;下面初始化C语言可能会用到的寄存器
 	mov ax, 0x10
@@ -82,7 +84,7 @@ halt_step:
 	halt
 	jmp halt_step
 
-
+; 重新加载GDT
 GDT_START:
 knull_dsc: dq 0
 kcode_dsc: dq 0x00cf9e000000ffff
