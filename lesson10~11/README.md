@@ -64,7 +64,7 @@ https://blog.csdn.net/ll15982534415/article/details/118771286
 
 
 
-# grub -> 二级引导器
+# 一级引导器grub multiboot -> 二级引导器
 二级引导器作为操作系统的先驱, 解析内核映像文件， 收集机器环境信息， 对CPU 内存， 显卡初步设置
 打包映像文件
 ```
